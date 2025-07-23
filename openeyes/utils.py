@@ -11,10 +11,10 @@ from pathlib import Path
 def helper_function(input_data: Any) -> str:
     """
     A helpful utility function.
-    
+
     Args:
         input_data: Input data of any type
-        
+
     Returns:
         String representation of the input
     """
@@ -24,67 +24,67 @@ def helper_function(input_data: Any) -> str:
 def load_config(config_path: str) -> Dict[str, Any]:
     """
     Load configuration from a JSON file.
-    
+
     Args:
         config_path: Path to the configuration file
-        
+
     Returns:
         Configuration dictionary
-        
+
     Raises:
         FileNotFoundError: If config file doesn't exist
         json.JSONDecodeError: If config file is not valid JSON
     """
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Configuration file not found: {config_path}")
-    
-    with open(config_path, 'r', encoding='utf-8') as file:
+
+    with open(config_path, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
 def save_config(config: Dict[str, Any], config_path: str) -> None:
     """
     Save configuration to a JSON file.
-    
+
     Args:
         config: Configuration dictionary to save
         config_path: Path where to save the configuration
     """
     # Create directory if it doesn't exist
     Path(config_path).parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(config_path, 'w', encoding='utf-8') as file:
+
+    with open(config_path, "w", encoding="utf-8") as file:
         json.dump(config, file, indent=2)
 
 
 def validate_input(data: Any, required_fields: List[str]) -> bool:
     """
     Validate that input data contains required fields.
-    
+
     Args:
         data: Input data (should be dict-like)
         required_fields: List of required field names
-        
+
     Returns:
         True if all required fields are present, False otherwise
     """
     if not isinstance(data, dict):
         return False
-    
+
     return all(field in data for field in required_fields)
 
 
 def format_output(data: Any, format_type: str = "json") -> str:
     """
     Format output data in the specified format.
-    
+
     Args:
         data: Data to format
         format_type: Output format ("json", "csv", "text")
-        
+
     Returns:
         Formatted string
-        
+
     Raises:
         ValueError: If format_type is not supported
     """
