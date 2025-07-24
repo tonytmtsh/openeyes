@@ -10,4 +10,10 @@ numpy>=1.24.0
 scipy>=1.11.0
 dlib>=19.24.0
 
+# Audio processing
+pygame>=2.1.0
+
+# Bluetooth communication
+pybluez>=0.23
+
 # Add your project dependencies here
