@@ -2,6 +2,7 @@ import cv2
 import os
 
 try:
+    print('starting the folders listing')
     haar_path = cv2.data.haarcascades
     print("OpenCV haarcascades directory:", haar_path)
     # List all Haarcascade XML files in this directory
